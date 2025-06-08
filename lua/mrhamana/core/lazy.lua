@@ -36,7 +36,20 @@ require("lazy").setup({
 	vim.cmd [[colorscheme tokyodark]]
     end,
 },
-  },
-  install = { colorscheme = { "habamax" } },
+{
+    'windwp/nvim-autopairs',
+    event = "InsertEnter",
+    config = true
+    -- use opts = {} for passing setup options
+    -- this is equivalent to setup({}) function
+},
+  	{	"neovim/nvim-lspconfig",
+	config= function()
+		require("lspconfig").lua_ls.setup{}	
+	end,
+},
+
+
+install = { colorscheme = { "habamax" } },
   checker = { enabled = true },
-})
+}})
