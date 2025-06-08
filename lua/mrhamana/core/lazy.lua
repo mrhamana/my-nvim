@@ -14,42 +14,44 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-
-
 -- Setup lazy.nvim
-require("lazy").setup({
-  spec = {
-     {
-    'nvim-telescope/telescope.nvim', tag = '0.1.8',
+-- The 'spec =' part is usually omitted, pass the table of plugins directly
+require("lazy").setup(
+  -- This is the table containing all your plugin specifications
+  {
+    {
+      'nvim-telescope/telescope.nvim',
+      tag = '0.1.8',
       dependencies = { 'nvim-lua/plenary.nvim' }
     },
-     {"nvim-treesitter/nvim-treesitter", branch = 'master', lazy = false,
-	dependencies = {
-    "nvim-treesitter/playground",
-  },
-     build = ":TSUpdate"},
-     {
-    "tiagovla/tokyodark.nvim",
-    opts = require("mrhamana.plugins.tokyotheme"),
-    config = function(_, opts)
+    {
+      "nvim-treesitter/nvim-treesitter",
+      branch = 'master',
+      lazy = false,
+      dependencies = {
+        "nvim-treesitter/playground",
+      },
+      build = ":TSUpdate"
+    },
+    {
+      "tiagovla/tokyodark.nvim",
+      opts = require("mrhamana.plugins.tokyotheme"),
+      config = function(_, opts)
         require("tokyodark").setup(opts)
-	vim.cmd [[colorscheme tokyodark]]
-    end,
-},
-{
-    'windwp/nvim-autopairs',
-    event = "InsertEnter",
-    config = true
-    -- use opts = {} for passing setup options
-    -- this is equivalent to setup({}) function
-},
-  	{	"neovim/nvim-lspconfig",
-	config= function()
-		require("lspconfig").lua_ls.setup{}	
-	end,
-},
-
-
-install = { colorscheme = { "habamax" } },
-  checker = { enabled = true },
-}})
+        vim.cmd [[colorscheme tokyodark]]
+      end,
+    },
+    {
+      'windwp/nvim-autopairs',
+      event = "InsertEnter",
+      config = true
+    },
+    -- This line needs to be inside the main plugins table
+    require("mrhamana.lsp.lsp"),
+  },
+  -- This is the second argument: the options table for lazy.setup
+  {
+    install = { colorscheme = { "habamax" } },
+    checker = { enabled = true },
+  }
+)
