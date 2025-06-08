@@ -47,7 +47,9 @@ require("lazy").setup(
       config = true
     },
     -- This line needs to be inside the main plugins table
-    require("mrhamana.lsp.lsp"),
+   require("mrhamana.lsp.mason"),
+    require("mrhamana.lsp.mason-lspconfig"),
+    require("mrhamana.lsp.lspconfig")
   },
   -- This is the second argument: the options table for lazy.setup
   {
