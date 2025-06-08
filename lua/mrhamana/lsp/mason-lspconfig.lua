@@ -12,11 +12,12 @@ return {
       ensure_installed = {
         "lua_ls",        -- For Lua development (Neovim config)
         "pyright",       -- For Python (Microsoft's LSP)
-        "tsserver",      -- For TypeScript/JavaScript
         "html",
         "cssls",
         "jsonls",
-        -- Add more language servers as needed:
+        "ruff"
+	-- Add more language servers as needed:
+	
         -- "bashls", "gopls", "rust_analyzer", "clangd", "yamlls",
         -- For Ruff linting via LSP (optional, nvim-lint is an alternative)
         -- "ruff_lsp",

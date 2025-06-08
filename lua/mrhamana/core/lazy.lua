@@ -46,11 +46,11 @@ require("lazy").setup(
       event = "InsertEnter",
       config = true
     },
-    -- This line needs to be inside the main plugins table
-   require("mrhamana.lsp.mason"),
+    require("mrhamana.lsp.mason"),
     require("mrhamana.lsp.mason-lspconfig"),
-    require("mrhamana.lsp.lspconfig")
-  },
+    require("mrhamana.lsp.lspconfig"),
+    require("mrhamana.lsp.linter")
+    },
   -- This is the second argument: the options table for lazy.setup
   {
     install = { colorscheme = { "habamax" } },
