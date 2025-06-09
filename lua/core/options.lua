@@ -1,5 +1,5 @@
-vim.wo.number=true
 vim.wo.relativenumber=true
+vim.wo.number=true
 vim.diagnostic.config({
   virtual_text = true,
   signs = true,
@@ -15,5 +15,4 @@ vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
     vim.diagnostic.open_float(nil, { focus = false })
   end,
 })
-
 

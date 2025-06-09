@@ -1,2 +1,3 @@
-require("mrhamana.core")
-require("mrhamana.plugins")
+
+require("core")
+require("config")
