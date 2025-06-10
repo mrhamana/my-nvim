@@ -32,6 +32,21 @@ require("lazy").setup({
 		build = ":TSUpdate",
 	},
 	{
+		"akinsho/toggleterm.nvim",
+		version = "*",
+		config = function()
+			require("toggleterm").setup({
+				size = 10,
+				open_mapping = [[<C-t>]],
+				direction = "horizontal", -- or "vertical" or "float"
+				shade_terminals = true,
+				start_in_insert = true,
+				persist_size = true,
+				persist_mode = true,
+			})
+		end,
+	},
+	{
 		"windwp/nvim-autopairs",
 		event = "InsertEnter",
 		config = true,
