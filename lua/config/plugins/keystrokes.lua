@@ -2,3 +2,5 @@ vim.keymap.set("n", "<leader>ff", require("telescope.builtin").find_files, { nor
 vim.keymap.set("n", "<leader>ts", function()
 	vim.cmd("TSPlaygroundToggle")
 end, { noremap = true, silent = true, desc = "Toggle Tree-sitter Playground" })
+
+vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)

@@ -22,6 +22,30 @@ require("lazy").setup({
 		tag = "0.1.8",
 		dependencies = { "nvim-lua/plenary.nvim" },
 	},
+	{ "github/copilot.vim" },
+	{
+		"windwp/nvim-ts-autotag",
+		event = "InsertEnter",
+		dependencies = { "nvim-treesitter/nvim-treesitter" },
+		config = function()
+			require("nvim-ts-autotag").setup({
+				opts = {
+					-- Defaults
+					enable_close = true, -- Auto close tags
+					enable_rename = true, -- Auto rename pairs of tags
+					enable_close_on_slash = false, -- Auto close on trailing </
+				},
+				-- Also override individual filetype configs, these take priority.
+				-- Empty by default, useful if one of the "opts" global settings
+				-- doesn't work well in a specific filetype
+				per_filetype = {
+					["html"] = {
+						enable_close = false,
+					},
+				},
+			})
+		end,
+	},
 	{
 		"nvim-treesitter/nvim-treesitter",
 		branch = "master",
@@ -36,7 +60,7 @@ require("lazy").setup({
 		version = "*",
 		config = function()
 			require("toggleterm").setup({
-				size = 10,
+				size = 12,
 				open_mapping = [[<C-t>]],
 				direction = "horizontal", -- or "vertical" or "float"
 				shade_terminals = true,
@@ -119,6 +143,24 @@ require("lazy").setup({
 			})
 		end,
 	},
+	{
+		"mbbill/undotree",
+	},
+	{
+		"kawre/leetcode.nvim",
+		build = ":TSUpdate html", -- if you have `nvim-treesitter` installed
+		run = ":TSUpdate",
+		dependencies = {
+			"nvim-telescope/telescope.nvim",
+			-- "ibhagwan/fzf-lua",
+			"nvim-lua/plenary.nvim",
+			"MunifTanjim/nui.nvim",
+		},
+		config = function()
+			require("leetcode").setup({})
+		end,
+	},
+
 	require("config.lsp.autocomplete"),
 	require("config.lsp.linter"),
 })

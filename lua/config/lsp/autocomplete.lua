@@ -35,6 +35,8 @@ return {
 				jsonls = {}, -- JSON
 				yamlls = {}, -- YAML
 				clangd = {},
+				rust_analyzer = {},
+				gopls = {},
 				-- Add more LSPs here if needed
 			}
 

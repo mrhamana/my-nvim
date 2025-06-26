@@ -20,6 +20,8 @@ return {
 					sh = { "shfmt" },
 					yaml = { "prettier" },
 					markdown = { "prettier" },
+					rust = { "rustfmt" },
+					go = { "gofmt" },
 				},
 			})
 		end,
